@@ -1,0 +1,1 @@
+from .custom_restframework_jwt import JSONWebTokenAuthentication
