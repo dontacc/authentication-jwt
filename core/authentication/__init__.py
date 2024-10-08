@@ -1,1 +1,3 @@
-from .custom_restframework_jwt import JSONWebTokenAuthentication
+from .authentication import JSONWebTokenAuthentication
+from .serializers import RefreshJSONWebTokenSerializer
+custom_refresh_jwt_token = RefreshJSONWebTokenSerializer

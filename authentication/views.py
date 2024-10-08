@@ -24,7 +24,7 @@ class LoginAPI(APIView):
                 }
             )
         otp_code = request.data.get("otp_code")
-        user, created = User.objects.get_or_create(phone_number=request.data["phone_number"])
+        user, created = User.objects.get_or_create(phone_number=request.data["phone_number"], username=phone_number)
 
         otp = OTP()
         if otp_code is None:

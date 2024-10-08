@@ -88,6 +88,7 @@ AUTH_USER_MODEL = "authentication.User"
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300),
     'JWT_ALGORITHM': 'HS256',
+    'JWT_ALLOW_REFRESH': False,
 }
 
 REST_FRAMEWORK = {
