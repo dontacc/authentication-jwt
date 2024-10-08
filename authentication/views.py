@@ -3,6 +3,8 @@ from authentication.models import User
 from rest_framework_jwt.settings import api_settings
 from rest_framework.response import Response
 from .utils import OTP
+from django.core.exceptions import ValidationError
+from .utils.phone_number_validator import PhoneNumberValidator
 from unidecode import unidecode
 
 
@@ -12,6 +14,15 @@ class LoginAPI(APIView):
 
     def post(self, request):
         phone_number = unidecode(str(request.data["phone_number"]))
+        try:
+            PhoneNumberValidator()(phone_number)
+        except:
+            return Response(
+                {
+                    "status": 400,
+                    "message": "please enter valid phone number"
+                }
+            )
         otp_code = request.data.get("otp_code")
         user, created = User.objects.get_or_create(phone_number=request.data["phone_number"])
 
