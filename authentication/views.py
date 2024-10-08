@@ -50,6 +50,7 @@ class LoginAPI(APIView):
 
                 payload = jwt_payload_handler(user)
                 token = jwt_encode_handler(payload)
+                print(payload)
 
                 return Response(
                     {
